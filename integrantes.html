@@ -1,102 +1,44 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Integrantes Aurea</title>
-  <link rel="stylesheet" href="integrantes.css" />
-</head>
-<body>
-  <div class="fondo">
-    <div class="estrellas"></div>
-    <div class="nubes"></div>
-  </div>
+const hojas = document.querySelectorAll('.hoja');
+const grupo1 = [0, 1, 2];
+const grupo2 = [3, 4, 5, 6];
 
-  <h1 class="titulo">✨ Conoce Nuestro Equipo Aurea ✨</h1>
-
-  <div class="hojas-contenedor">
-    <!-- Primer grupo -->
-    <div class="hoja pastel1">
-      <h3>Mariana Marcelo – Alcaldesa (4to G)</h3>
-      <p>Representa a todos los estudiantes, lidera las reuniones del Municipio Escolar y coordina con las autoridades del colegio para ejecutar los proyectos y propuestas.</p>
-    </div>
-
-    <div class="hoja pastel2">
-      <h3>Katthe Godínez – Teniente Alcaldesa (3ro G)</h3>
-      <p>Apoya directamente a la alcaldesa, asume su lugar cuando es necesario y supervisa el cumplimiento de las actividades del municipio.</p>
-    </div>
-
-    <div class="hoja pastel3">
-      <h3>Keyla Monzón (4 B) – Regidora de Ambiente y Salud</h3>
-      <p>Promueve campañas ecológicas y de bienestar, fomentando hábitos saludables y el cuidado del entorno escolar.</p>
-    </div>
-
-    <!-- Segundo grupo -->
-    <div class="hoja pastel4">
-      <h3>Valentina Tineo (4 B) – Regidora de Emprendimiento</h3>
-      <p>Organiza talleres y actividades que desarrollan la creatividad, el liderazgo y el espíritu emprendedor de los estudiantes.</p>
-    </div>
-
-    <div class="hoja pastel5">
-      <h3>Bianca Cabanillas (4 G) – Regidora de Deportes</h3>
-      <p>Incentiva la participación en actividades deportivas y recreativas para fortalecer el trabajo en equipo y la vida saludable.</p>
-    </div>
-
-    <div class="hoja pastel6">
-      <h3>Víctor (2 E) – Regidor de Comunicación</h3>
-      <p>Se encarga de difundir las actividades del Municipio Escolar, mantener informada a la comunidad y reforzar los valores de unión y participación.</p>
-    </div>
-
-    <div class="hoja pastel7">
-      <h3>Aurea Team 🌟</h3>
-      <p>Unidos por la creatividad, el liderazgo y el compromiso de construir una comunidad escolar brillante.</p>
-    </div>
-  </div>
-
-  <!-- Botón siguiente -->
-  <button id="btnSiguiente" class="siguiente-btn" onclick="location.href='objetivos.html'">
-    ➡️ Ver Objetivos
-  </button>
-
-  <script>
-    const hojas = document.querySelectorAll('.hoja');
-    const grupo1 = [0, 1, 2];
-    const grupo2 = [3, 4, 5, 6];
-
-    function mostrarGrupo(indices) {
-      indices.forEach((i, index) => {
-        setTimeout(() => {
-          hojas[i].classList.add('mostrar');
-        }, index * 8000); // 8 segundos entre cada hoja
-      });
-    }
-
-    function ocultarGrupo(indices) {
-      indices.forEach((i, index) => {
-        setTimeout(() => {
-          hojas[i].classList.remove('mostrar');
-        }, index * 8000);
-      });
-    }
-
-    // Animación general
+function mostrarGrupo(indices, delay=8000) {
+  indices.forEach((i, index) => {
     setTimeout(() => {
-      mostrarGrupo(grupo1);
-      setTimeout(() => {
-        ocultarGrupo(grupo1);
-        setTimeout(() => {
-          mostrarGrupo(grupo2);
-          setTimeout(mostrarBotonSiguiente, 15000);
-        }, 3000);
-      }, 24000); // 3 hojas * 8 segundos = 24 segundos
-    }, 2000);
+      hojas[i].classList.add('mostrar');
+    }, index * delay);
+  });
+}
 
-    function mostrarBotonSiguiente() {
-      document.getElementById('btnSiguiente').classList.add('mostrar');
-    }
-  </script>
-</body>
-</html>
+function ocultarGrupo(indices, delay=8000) {
+  indices.forEach((i, index) => {
+    setTimeout(() => {
+      hojas[i].classList.remove('mostrar');
+    }, index * delay);
+  });
+}
+
+// Ajustar tiempo según pantalla
+let tiempo = 8000;
+if(window.innerWidth <= 480) tiempo = 4000; // móviles más rápidos
+else if(window.innerWidth <= 768) tiempo = 6000; // tablets
+
+setTimeout(() => {
+  mostrarGrupo(grupo1, tiempo);
+  setTimeout(() => {
+    ocultarGrupo(grupo1, tiempo);
+    setTimeout(() => {
+      mostrarGrupo(grupo2, tiempo);
+      setTimeout(mostrarBotonSiguiente, tiempo*4);
+    }, 3000);
+  }, tiempo * grupo1.length);
+}, 2000);
+
+function mostrarBotonSiguiente() {
+  document.getElementById('btnSiguiente').classList.add('mostrar');
+}
+
+
 
 
 
