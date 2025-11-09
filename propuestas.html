@@ -1,214 +1,130 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Propuestas del Municipio Escolar</title>
-<style>
-  body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: #a8d5ba; /* verde natural */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #a8d5ba;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
 
-  h1 {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 30px;
-    color: #1b3a2f;
-  }
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color: #1b3a2f;
+}
 
-  .cartillas-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-  }
+.cartillas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
 
-  .cartilla {
-    perspective: 1000px;
-    width: 300px;
-    height: 400px;
-  }
+.cartilla {
+  perspective: 1000px;
+  width: 300px;
+  height: 400px;
+}
 
-  .cartilla-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: left;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-  }
+.cartilla-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
 
-  .cartilla:hover .cartilla-inner,
-  .cartilla.flip .cartilla-inner {
-    transform: rotateY(180deg);
-  }
+.cartilla:hover .cartilla-inner,
+.cartilla.flip .cartilla-inner {
+  transform: rotateY(180deg);
+}
 
-  .cartilla-front, .cartilla-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    backface-visibility: hidden;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+.cartilla-front, .cartilla-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-  /* Colores pastel */
-  .cartilla-front {
-    font-weight: bold;
-    font-size: 1.1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+/* Colores pastel */
+.cartilla-front {
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .cartilla-back {
-    transform: rotateY(180deg);
-    font-size: 0.9rem;
-    overflow-y: auto;
-  }
+.cartilla-back {
+  transform: rotateY(180deg);
+  font-size: 0.9rem;
+  overflow-y: auto;
+}
 
-  .cartilla1 .cartilla-front { background: #ffeaa7; color: #3d3d3d; } /* amarillo pastel */
-  .cartilla1 .cartilla-back { background: #fdcb6e; }
+.cartilla1 .cartilla-front { background: #ffeaa7; color: #3d3d3d; }
+.cartilla1 .cartilla-back { background: #fdcb6e; }
 
-  .cartilla2 .cartilla-front { background: #d7bde2; color: #3d3d3d; } /* lila pastel */
-  .cartilla2 .cartilla-back { background: #9b59b6; }
+.cartilla2 .cartilla-front { background: #d7bde2; color: #3d3d3d; }
+.cartilla2 .cartilla-back { background: #9b59b6; }
 
-  .cartilla3 .cartilla-front { background: #a3e4d7; color: #3d3d3d; } /* verde pastel */
-  .cartilla3 .cartilla-back { background: #1abc9c; }
+.cartilla3 .cartilla-front { background: #a3e4d7; color: #3d3d3d; }
+.cartilla3 .cartilla-back { background: #1abc9c; }
 
-  .cartilla4 .cartilla-front { background: #85c1e9; color: #3d3d3d; } /* azul pastel */
-  .cartilla4 .cartilla-back { background: #3498db; }
+.cartilla4 .cartilla-front { background: #85c1e9; color: #3d3d3d; }
+.cartilla4 .cartilla-back { background: #3498db; }
 
-  /* Iconos frontales */
-  .cartilla-front span.icon {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
+.cartilla-front span.icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
 
-  #botonVoto {
-    margin-top: 40px;
-    padding: 15px 30px;
-    font-size: 1.5rem;
-    background-color: #1b3a2f;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-  }
+#botonVoto {
+  margin-top: 40px;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  background-color: #1b3a2f;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
 
-  @media (max-width: 768px) {
-    .cartillas-container {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+#botonVoto:hover {
+  transform: scale(1.05);
+}
 
-</style>
-</head>
-<body>
+/* --- MEDIA QUERIES PARA RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .cartilla { width: 250px; height: 350px; }
+  h1 { font-size: 2.5rem; }
+  #botonVoto { font-size: 1.3rem; padding: 12px 25px; }
+}
 
-<h1>Propuestas del Municipio Escolar</h1>
+@media (max-width: 768px) {
+  .cartillas-container { flex-direction: column; align-items: center; }
+  .cartilla { width: 220px; height: 320px; }
+  h1 { font-size: 2rem; }
+  #botonVoto { font-size: 1.2rem; padding: 10px 20px; }
+}
 
-<div class="cartillas-container">
-
-  <!-- Cartilla 1 -->
-  <div class="cartilla cartilla1" onclick="this.classList.toggle('flip')">
-    <div class="cartilla-inner">
-      <div class="cartilla-front">
-        <span class="icon">🌽</span>
-        Propuesta Generadora de Dinero:<br>“Venta Áurea de Canchita”
-      </div>
-      <div class="cartilla-back">
-        <strong>¿Qué?</strong> Organización de ventas bimestrales de 100 bolsitas de canchita (salada o dulce) a S/1.00 cada una.<br><br>
-        <strong>¿Para qué?</strong> Impulsar espíritu emprendedor y sostenibilidad, destinando lo recaudado a premios y actividades.<br><br>
-        <strong>¿Cuánto?</strong> 8 ventas al año. Ganancia neta anual: S/520.<br><br>
-        <strong>¿Cómo?</strong> Regidores prepararán y venderán canchita durante los recreos, registrando ingresos y gastos.<br><br>
-        <strong>¿Cuándo?</strong> De marzo a noviembre, dos veces por bimestre.<br><br>
-        <strong>¿Con qué?</strong> Maíz, aceite, sal/azúcar, bolsitas y utensilios de cocina.<br><br>
-        <strong>¿Quiénes?</strong> Regidor de Emprendimiento, tesorera, alcaldesa y demás regidores.<br><br>
-        <strong>Distribución de fondos:</strong> Premios S/250, Reciclaje S/216, Fondo de Emergencia S/54.
-      </div>
-    </div>
-  </div>
-
-  <!-- Cartilla 2 -->
-  <div class="cartilla cartilla2" onclick="this.classList.toggle('flip')">
-    <div class="cartilla-inner">
-      <div class="cartilla-front">
-        <span class="icon">🤟</span>
-        Propuesta Áurea de Inclusión:<br>“Manos que Hablan”
-      </div>
-      <div class="cartilla-back">
-        <strong>¿Qué?</strong> Talleres básicos de lengua de señas para todos los estudiantes.<br><br>
-        <strong>¿Para qué?</strong> Promover inclusión, respeto y empatía.<br><br>
-        <strong>¿Cuánto?</strong> 4 encuentros por grupo, gratuitos para todos los grados.<br><br>
-        <strong>¿Cómo?</strong> Expertos invitados impartirán sesiones prácticas con dinámicas interactivas.<br><br>
-        <strong>¿Cuándo?</strong> Mayo o julio, según tutorías (lunes iniciales, viernes superiores).<br><br>
-        <strong>¿Con qué?</strong> Polideportivo, aulas, proyector, materiales visuales y hojas de aprendizaje.<br><br>
-        <strong>¿Quiénes?</strong> Municipio Escolar, educadores de apoyo, Área de Convivencia Escolar, Sra. Linda Hu de Wu.
-      </div>
-    </div>
-  </div>
-
-  <!-- Cartilla 3 -->
-  <div class="cartilla cartilla3" onclick="this.classList.toggle('flip')">
-    <div class="cartilla-inner">
-      <div class="cartilla-front">
-        <span class="icon">♻️</span>
-        Reto Áurea del Reciclaje
-      </div>
-      <div class="cartilla-back">
-        <strong>¿Qué?</strong> Cada aula elabora tachos de reciclaje decorados y se premia a los mejores.<br><br>
-        <strong>¿Para qué?</strong> Promover conciencia ecológica y trabajo colaborativo.<br><br>
-        <strong>¿Cuánto?</strong> 6 premios en total.<br><br>
-        <strong>¿Cómo?</strong> Ganadores disfrutan película en AIP con 30 bolsitas de canchita, gaseosa Guaraná y vasitos descartables.<br><br>
-        <strong>¿Cuándo?</strong> Del 1 de julio al 31 de agosto.<br><br>
-        <strong>¿Con qué?</strong> Materiales reciclables, cartones, témperas, bolsas ecológicas, gaseosa, vasitos, canchita.<br><br>
-        <strong>¿Quiénes?</strong> Regidores de Salud y Ambiente, Educación, tutores y alcaldesa.<br><br>
-        <strong>Inversión:</strong> S/36 por premio × 6 = S/216.
-      </div>
-    </div>
-  </div>
-
-  <!-- Cartilla 4 -->
-  <div class="cartilla cartilla4" onclick="this.classList.toggle('flip')">
-    <div class="cartilla-inner">
-      <div class="cartilla-front">
-        <span class="icon">🎬</span>
-        Desafío Áurea de la Buena Convivencia
-      </div>
-      <div class="cartilla-back">
-        <strong>¿Qué?</strong> Competencia entre aulas con microvideos tipo TikTok mostrando respeto y convivencia.<br><br>
-        <strong>¿Para qué?</strong> Promover cultura escolar de respeto y empatía.<br><br>
-        <strong>¿Cuánto?</strong> 1 video por grado, 5 aulas ganadoras.<br><br>
-        <strong>¿Cómo?</strong> Termómetro de convivencia, grabación y proyección de videos en tutorías o CTA.<br><br>
-        <strong>¿Cuándo?</strong> Mayo a julio, premiación anual.<br><br>
-        <strong>¿Con qué?</strong> Celulares, cámaras, carteles, materiales para grabar, proyector, premios simbólicos.<br><br>
-        <strong>¿Quiénes?</strong> Alcaldesa, regidor de Derechos del NNA, regidor de Comunicación, tutores de grado.<br><br>
-        <strong>Inversión:</strong> S/50 x 5 grados = S/250.
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<button id="botonVoto" onclick="location.href='voto.html'">Voto Responsable</button>
-
-</body>
-</html>
-
+@media (max-width: 480px) {
+  .cartilla { width: 180px; height: 280px; }
+  h1 { font-size: 1.5rem; margin-bottom: 20px; }
+  .cartilla-front span.icon { font-size: 2rem; }
+  #botonVoto { font-size: 1rem; padding: 8px 18px; }
+}
 
