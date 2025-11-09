@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       background: radial-gradient(circle at center, #001a33 20%, #000814 100%);
       color: gold;
       font-family: 'Cinzel', serif;
@@ -19,7 +19,7 @@
       position: relative;
     }
 
-    /* Fondo con marca de agua */
+    /* Fondo marca de agua */
     .marca-agua {
       position: absolute;
       top: 50%;
@@ -34,6 +34,7 @@
     /* Logo */
     .logo {
       width: 600px;
+      max-width: 90%;
       height: auto;
       opacity: 0;
       animation: logoInicio 6s forwards;
@@ -41,20 +42,10 @@
     }
 
     @keyframes logoInicio {
-      0% {
-        opacity: 0;
-        transform: scale(0.3) translateY(0);
-      }
-      25% {
-        opacity: 1;
-        transform: scale(1.4);
-      }
-      60% {
-        transform: scale(1) translateY(0);
-      }
-      100% {
-        transform: scale(0.7) translateY(-250px);
-      }
+      0% { opacity: 0; transform: scale(0.3) translateY(0); }
+      25% { opacity: 1; transform: scale(1.4); }
+      60% { transform: scale(1) translateY(0); }
+      100% { transform: scale(0.7) translateY(-250px); }
     }
 
     /* Título ÁUREA */
@@ -69,11 +60,10 @@
       animation: mostrarTitulo 0.5s forwards ease-in;
       animation-delay: 6s;
       z-index: 2;
+      flex-wrap: wrap;
     }
 
-    @keyframes mostrarTitulo {
-      to { opacity: 1; }
-    }
+    @keyframes mostrarTitulo { to { opacity: 1; } }
 
     .letra {
       font-size: 160px;
@@ -85,20 +75,10 @@
     }
 
     @keyframes entrarLetra {
-      0% {
-        opacity: 0;
-        transform: translateY(150px) rotate(25deg) scale(0.8);
-      }
-      40% {
-        opacity: 1;
-        transform: translateY(-60px) rotate(-15deg) scale(1.2);
-      }
-      70% {
-        transform: translateY(10px) rotate(5deg) scale(1);
-      }
-      100% {
-        transform: translateY(0) rotate(0deg) scale(1);
-      }
+      0% { opacity: 0; transform: translateY(150px) rotate(25deg) scale(0.8); }
+      40% { opacity: 1; transform: translateY(-60px) rotate(-15deg) scale(1.2); }
+      70% { transform: translateY(10px) rotate(5deg) scale(1); }
+      100% { transform: translateY(0) rotate(0deg) scale(1); }
     }
 
     /* Botón */
@@ -146,6 +126,20 @@
     @keyframes flotar {
       0% { transform: translateY(0) scale(1); opacity: 1; }
       100% { transform: translateY(-900px) scale(0.4); opacity: 0; }
+    }
+
+    /* MEDIA QUERIES PARA CELULARES */
+    @media (max-width: 768px) {
+      .letra { font-size: 100px; }
+      button { font-size: 22px; padding: 14px 30px; bottom: 70px; }
+      .logo { width: 400px; }
+    }
+
+    @media (max-width: 480px) {
+      .letra { font-size: 70px; }
+      button { font-size: 18px; padding: 12px 25px; bottom: 50px; }
+      .logo { width: 280px; }
+      .titulo { gap: 5px; }
     }
   </style>
 </head>
@@ -197,6 +191,8 @@
 
 </body>
 </html>
+
+
 
 
 
