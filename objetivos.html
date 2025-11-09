@@ -1,212 +1,194 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Objetivos – Lista Áurea</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background: radial-gradient(circle at center, #f8bbd0, #ba68c8, #7b1fa2);
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
-      color: #fff;
-    }
+body {
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #f8bbd0, #ba68c8, #7b1fa2);
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  color: #fff;
+}
 
-    /* --- ANIMACIÓN DE ARQUERÍA --- */
-    .intro {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: radial-gradient(circle at center, #f8bbd0, #ba68c8, #7b1fa2);
-      z-index: 10;
-      animation: desaparecer 1s ease forwards 4s;
-    }
+/* --- ANIMACIÓN DE ARQUERÍA --- */
+.intro {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: radial-gradient(circle at center, #f8bbd0, #ba68c8, #7b1fa2);
+  z-index: 10;
+  animation: desaparecer 1s ease forwards 4s;
+}
 
-    .diana {
-      position: relative;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, #fff 30%, #ff4081 65%, #c2185b 100%);
-      box-shadow: 0 0 40px rgba(255, 182, 193, 0.8);
-      animation: latido 2s ease-in-out infinite;
-    }
+.diana {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #fff 30%, #ff4081 65%, #c2185b 100%);
+  box-shadow: 0 0 40px rgba(255, 182, 193, 0.8);
+  animation: latido 2s ease-in-out infinite;
+}
 
-    .flecha {
-      position: absolute;
-      width: 240px;
-      height: 5px;
-      background: linear-gradient(90deg, #fff, #ffb6c1, #ff80ab);
-      border-radius: 3px;
-      left: -250px;
-      top: 50%;
-      box-shadow: 0 0 15px rgba(255,255,255,0.8);
-      animation: disparo 2s ease-in-out 1s forwards;
-    }
+.flecha {
+  position: absolute;
+  width: 240px;
+  height: 5px;
+  background: linear-gradient(90deg, #fff, #ffb6c1, #ff80ab);
+  border-radius: 3px;
+  left: -250px;
+  top: 50%;
+  box-shadow: 0 0 15px rgba(255,255,255,0.8);
+  animation: disparo 2s ease-in-out 1s forwards;
+}
 
-    .destello {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.9), rgba(255,255,255,0));
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      opacity: 0;
-      animation: impacto 1.2s ease-out 2.5s forwards;
-    }
+.destello {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.9), rgba(255,255,255,0));
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  animation: impacto 1.2s ease-out 2.5s forwards;
+}
 
-    @keyframes disparo {
-      0% { left: -250px; }
-      80% { left: calc(50% - 120px); }
-      100% { left: calc(50% - 120px); opacity: 0; }
-    }
+@keyframes disparo {
+  0% { left: -250px; }
+  80% { left: calc(50% - 120px); }
+  100% { left: calc(50% - 120px); opacity: 0; }
+}
 
-    @keyframes impacto {
-      0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-      50% { transform: translate(-50%, -50%) scale(1.8); opacity: 1; }
-      100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
-    }
+@keyframes impacto {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  50% { transform: translate(-50%, -50%) scale(1.8); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
 
-    @keyframes latido {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
 
-    @keyframes desaparecer {
-      to { opacity: 0; visibility: hidden; }
-    }
+@keyframes desaparecer {
+  to { opacity: 0; visibility: hidden; }
+}
 
-    /* --- CONTENIDO DE OBJETIVOS --- */
-    .contenido {
-      opacity: 0;
-      animation: aparecer 1s ease forwards 5s;
-      padding-top: 80px;
-    }
+/* --- CONTENIDO DE OBJETIVOS --- */
+.contenido {
+  opacity: 0;
+  animation: aparecer 1s ease forwards 5s;
+  padding-top: 80px;
+}
 
-    @keyframes aparecer {
-      to { opacity: 1; }
-    }
+@keyframes aparecer {
+  to { opacity: 1; }
+}
 
-    h1 {
-      font-size: 45px;
-      color: #fce4ec;
-      text-shadow: 0 0 20px rgba(255,255,255,0.6);
-      margin-bottom: 50px;
-    }
+h1 {
+  font-size: 45px;
+  color: #fce4ec;
+  text-shadow: 0 0 20px rgba(255,255,255,0.6);
+  margin-bottom: 50px;
+}
 
-    .contenedor {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 50px;
-      padding: 0 20px;
-    }
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 0 20px;
+}
 
-    .tarjeta {
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, #fff 30%, #ce93d8 65%, #ba68c8 100%);
-      box-shadow: 0 0 40px rgba(255, 182, 193, 0.7);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 30px;
-      text-align: center;
-      transition: transform 0.4s, box-shadow 0.4s;
-      animation: aparecerTarjeta 1.5s ease forwards;
-      opacity: 0;
-      transform: scale(0.8);
-    }
+.tarjeta {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #fff 30%, #ce93d8 65%, #ba68c8 100%);
+  box-shadow: 0 0 40px rgba(255, 182, 193, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.4s, box-shadow 0.4s;
+  animation: aparecerTarjeta 1.5s ease forwards;
+  opacity: 0;
+  transform: scale(0.8);
+}
 
-    .tarjeta:nth-child(1) { animation-delay: 5.5s; }
-    .tarjeta:nth-child(2) { animation-delay: 6.5s; }
+.tarjeta:nth-child(1) { animation-delay: 5.5s; }
+.tarjeta:nth-child(2) { animation-delay: 6.5s; }
 
-    @keyframes aparecerTarjeta {
-      to { opacity: 1; transform: scale(1); }
-    }
+@keyframes aparecerTarjeta {
+  to { opacity: 1; transform: scale(1); }
+}
 
-    h2 {
-  color: #000; /* ahora los subtítulos son negros */
+h2 {
+  color: #000;
   font-size: 30px;
   font-weight: 700;
-  text-shadow: 0 0 8px rgba(255,255,255,0.4); /* brillo suave opcional */
+  text-shadow: 0 0 8px rgba(255,255,255,0.4);
   margin-bottom: 15px;
 }
 
-    p {
+p {
   font-size: 16px;
   background: rgba(255,255,255,0.8);
   border-radius: 15px;
   padding: 10px 15px;
-  color: #000; /* 🔥 ahora el texto es negro */
+  color: #000;
   line-height: 1.5;
 }
 
+button {
+  margin-top: 60px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 18px;
+  background: linear-gradient(90deg, #f48fb1, #ce93d8);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,255,255,0.5);
+  transition: transform 0.3s;
+  animation: aparecerBoton 1s ease 7s forwards;
+  opacity: 0;
+  transform: scale(0.8);
+}
 
-    button {
-      margin-top: 60px;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 25px;
-      font-size: 18px;
-      background: linear-gradient(90deg, #f48fb1, #ce93d8);
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(255,255,255,0.5);
-      transition: transform 0.3s;
-      animation: aparecerBoton 1s ease 7s forwards;
-      opacity: 0;
-      transform: scale(0.8);
-    }
+button:hover {
+  transform: scale(1.05);
+}
 
-    button:hover {
-      transform: scale(1.05);
-    }
+@keyframes aparecerBoton {
+  to { opacity: 1; transform: scale(1); }
+}
 
-    @keyframes aparecerBoton {
-      to { opacity: 1; transform: scale(1); }
-    }
+/* --- MEDIA QUERIES PARA RESPONSIVE --- */
+@media (max-width: 768px) {
+  .diana { width: 160px; height: 160px; }
+  .flecha { width: 180px; left: -190px; }
+  .destello { width: 90px; height: 90px; }
+  h1 { font-size: 36px; margin-bottom: 35px; }
+  .tarjeta { width: 220px; height: 220px; padding: 20px; }
+  h2 { font-size: 24px; }
+  p { font-size: 14px; padding: 8px 12px; }
+  button { font-size: 16px; padding: 10px 20px; margin-top: 40px; }
+}
 
-  </style>
-</head>
-<body>
-
-  <!-- ANIMACIÓN DE ARQUERÍA -->
-  <div class="intro">
-    <div class="diana"></div>
-    <div class="flecha"></div>
-    <div class="destello"></div>
-  </div>
-
-  <!-- CONTENIDO DE OBJETIVOS -->
-  <div class="contenido">
-    <h1>🎯 Nuestros Objetivos 🎯</h1>
-    <div class="contenedor">
-      <div class="tarjeta">
-        <h2>✨ Objetivo General</h2>
-        <p>Fomentar el liderazgo, la unión y la participación activa de los estudiantes, impulsando valores de respeto, empatía y compromiso con la comunidad educativa.</p>
-      </div>
-
-      <div class="tarjeta">
-        <h2>💫 Objetivo Específico</h2>
-        <p>Desarrollar proyectos que fortalezcan el trabajo en equipo, la solidaridad y la creatividad, creando un ambiente escolar más inclusivo, alegre y colaborativo.</p>
-      </div>
-    </div>
-
-   <button onclick="window.location.href='propuestas.html'">➡️ Ver Propuestas</button>
-  </div>
-
-</body>
-</html>
-
+@media (max-width: 480px) {
+  .diana { width: 120px; height: 120px; }
+  .flecha { width: 140px; left: -150px; }
+  .destello { width: 60px; height: 60px; }
+  h1 { font-size: 28px; margin-bottom: 25px; }
+  .tarjeta { width: 180px; height: 180px; padding: 15px; }
+  h2 { font-size: 20px; }
+  p { font-size: 12px; padding: 6px 10px; }
+  button { font-size: 14px; padding: 8px 18px; margin-top: 30px; }
+}
 
