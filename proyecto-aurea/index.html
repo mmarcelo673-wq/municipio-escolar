@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista Áurea</title>
+  <style>
+    /* Fondo negro y centrado */
+    body {
+      margin: 0;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* --- Estrellitas --- */
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.5);
+      }
+    }
+
+    /* --- Imagen despegue --- */
+    #despegue {
+      position: absolute;
+      bottom: 10%;
+      left: -1000px;
+      width: 900px; /* más grande */
+      height: auto;
+      animation: flyAcross 6s ease-in-out forwards;
+      z-index: 5;
+    }
+
+    @keyframes flyAcross {
+      0% {
+        left: -1000px;
+        opacity: 0;
+        transform: scale(1);
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        left: 100vw;
+        opacity: 0;
+        transform: scale(1.1);
+      }
+    }
+
+    /* --- Ojos --- */
+    #div1 {
+      width: 100%;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    @keyframes animateHeight {
+      0% {
+        height: 0px;
+      }
+      50% {
+        height: 80px;
+      }
+    }
+
+    #l,
+    #m {
+      width: 280px; /* más grandes */
+      height: 140px;
+      position: relative;
+      overflow: hidden;
+      background-color: black;
+      border-radius: 0px 400px 0px 400px;
+      border: 2px solid #666;
+      animation: animateHeight 1s infinite alternate-reverse;
+      margin: 50px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+
+    #m {
+      border-radius: 400px 0px 400px 0px;
+    }
+
+    .pupil,
+    .pupl2,
+    .pupil3,
+    .pupil4,
+    .p5 {
+      overflow: hidden;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.158);
+    }
+
+    .pupil {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(
+        rgb(255, 105, 105),
+        rgb(129, 249, 129),
+        rgb(96, 96, 255),
+        rgb(71, 71, 71)
+      );
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+    }
+
+    .p5 {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(
+        rgb(252, 71, 71),
+        rgb(70, 249, 70),
+        rgb(63, 63, 254),
+        rgb(48, 47, 47)
+      );
+    }
+
+    .pupl2 {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(
+        rgb(255, 2, 2),
+        rgb(0, 255, 0),
+        rgb(0, 0, 255),
+        rgb(0, 0, 0)
+      );
+    }
+
+    .pupil3 {
+      width: 5px;
+      height: 18px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Estrellitas generadas con JS -->
+  <script>
+    const numStars = 80;
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement("div");
+      star.classList.add("star");
+      star.style.top = Math.random() * 100 + "vh";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.animationDuration = (1.5 + Math.random() * 2) + "s";
+      document.body.appendChild(star);
+    }
+  </script>
+
+  <!-- Imagen del despegue -->
+  <img id="despegue" src="despegue.jpg" alt="Despegue animado">
+
+  <!-- Ojos -->
+  <div id="div1">
+    <div id="l">
+      <div class="pupil">
+        <div class="p5">
+          <div class="pupl2">
+            <div class="pupil3"></div>
+            <div class="pupil4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="m">
+      <div class="pupil">
+        <div class="p5">
+          <div class="pupl2">
+            <div class="pupil3"></div>
+            <div class="pupil4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sonido del fénix (opcional)
+    const sonido = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_77f1b671e4.mp3?filename=firebird-112397.mp3");
+    document.body.addEventListener("click", () => {
+      sonido.play();
+    });
+
+    // Redirección después de 6 segundos
+    setTimeout(() => {
+      window.location.href = "presentacion.html";
+    }, 6000);
+  </script>
+</body>
+</html>
+

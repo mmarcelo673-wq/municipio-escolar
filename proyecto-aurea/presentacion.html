@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Áurea - Presentación</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #001a33 20%, #000814 100%);
+      color: gold;
+      font-family: 'Cinzel', serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Fondo con marca de agua */
+    .marca-agua {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 85%;
+      opacity: 0.08;
+      z-index: 0;
+      filter: blur(2px);
+    }
+
+    /* Logo */
+    .logo {
+      width: 600px;
+      height: auto;
+      opacity: 0;
+      animation: logoInicio 6s forwards;
+      z-index: 2;
+    }
+
+    @keyframes logoInicio {
+      0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(0);
+      }
+      25% {
+        opacity: 1;
+        transform: scale(1.4);
+      }
+      60% {
+        transform: scale(1) translateY(0);
+      }
+      100% {
+        transform: scale(0.7) translateY(-250px);
+      }
+    }
+
+    /* Título ÁUREA */
+    .titulo {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: mostrarTitulo 0.5s forwards ease-in;
+      animation-delay: 6s;
+      z-index: 2;
+    }
+
+    @keyframes mostrarTitulo {
+      to { opacity: 1; }
+    }
+
+    .letra {
+      font-size: 160px;
+      color: gold;
+      text-shadow: 0 0 40px gold, 0 0 80px orange;
+      opacity: 0;
+      transform: translateY(150px) rotate(25deg);
+      animation: entrarLetra 1s forwards ease-out;
+    }
+
+    @keyframes entrarLetra {
+      0% {
+        opacity: 0;
+        transform: translateY(150px) rotate(25deg) scale(0.8);
+      }
+      40% {
+        opacity: 1;
+        transform: translateY(-60px) rotate(-15deg) scale(1.2);
+      }
+      70% {
+        transform: translateY(10px) rotate(5deg) scale(1);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+      }
+    }
+
+    /* Botón */
+    button {
+      position: absolute;
+      bottom: 100px;
+      padding: 16px 40px;
+      border: 3px solid gold;
+      background: transparent;
+      color: gold;
+      font-size: 26px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      opacity: 0;
+      animation: aparecerBoton 2s forwards ease-in;
+      animation-delay: 9s;
+      z-index: 3;
+    }
+
+    @keyframes aparecerBoton {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    button:hover {
+      background: gold;
+      color: #001a33;
+      box-shadow: 0 0 25px gold, 0 0 50px orange;
+      transform: scale(1.08);
+    }
+
+    /* Partículas doradas */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: gold;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: flotar 10s infinite ease-in-out;
+      z-index: 1;
+    }
+
+    @keyframes flotar {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-900px) scale(0.4); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo marca de agua -->
+  <img src="escuela.jpg" alt="Marca de agua escuela" class="marca-agua">
+
+  <!-- Logo -->
+  <img src="logo.png" alt="Logo Áurea" class="logo">
+
+  <!-- Título -->
+  <div class="titulo" id="titulo"></div>
+
+  <!-- Botón -->
+  <button onclick="irIntegrantes()">Entrar</button>
+
+  <script>
+    // Partículas doradas flotantes
+    for (let i = 0; i < 70; i++) {
+      let p = document.createElement('div');
+      p.classList.add('particle');
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.top = Math.random() * 100 + 'vh';
+      p.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(p);
+    }
+
+    // Letras de ÁUREA con entrada animada
+    const texto = "ÁUREA";
+    const contenedor = document.getElementById('titulo');
+
+    setTimeout(() => {
+      contenedor.style.opacity = "1";
+      for (let i = 0; i < texto.length; i++) {
+        const span = document.createElement('span');
+        span.classList.add('letra');
+        span.textContent = texto[i];
+        span.style.animationDelay = `${0.25 * i}s`;
+        contenedor.appendChild(span);
+      }
+    }, 6000);
+
+    // Redirección del botón
+    function irIntegrantes() {
+      window.location.href = "integrantes.html";
+    }
+  </script>
+
+</body>
+</html>
+
+
+
