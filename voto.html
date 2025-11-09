@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voto Responsable</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cinzel', serif;
+      background-color: #cce7ff; /* Celestito alegre */
+      background-image: url('https://images.unsplash.com/photo-1601874386933-6abe7f3a0a1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc2MjR8MHwxfHNlYXJjaHwxfHxkaXNwYWx5fGVufDB8fHx8MTY5OTMzNzAxOQ&ixlib=rb-4.0.3&q=80&w=1080');
+      background-repeat: repeat;
+      background-size: 200px;
+      color: #002147;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #ff9800;
+      font-size: 2.8rem;
+      margin-bottom: 50px;
+      text-align: center;
+      animation: shine 3s infinite alternate;
+    }
+
+    @keyframes shine {
+      from { text-shadow: 0 0 10px #ffd700; }
+      to { text-shadow: 0 0 25px #ffd700; }
+    }
+
+    .tarjetas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .tarjeta {
+      background-color: #004080;
+      color: #fff;
+      border-radius: 20px;
+      width: 250px;
+      min-height: 280px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 0 35px rgba(255, 215, 0, 0.9);
+      cursor: pointer;
+    }
+
+    .tarjeta h2 {
+      color: #ffd700;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .tarjeta p {
+      font-size: 14px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .iconos {
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .btn-siguiente {
+      margin-top: 40px;
+      background-color: #ff9800;
+      color: #002147;
+      border: none;
+      padding: 15px 30px;
+      font-size: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: pulse 2s infinite alternate;
+    }
+
+    .btn-siguiente span {
+      display: inline-block;
+      animation: moveArrow 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { box-shadow: 0 0 10px #ffd700; }
+      to { box-shadow: 0 0 25px #ffd700; }
+    }
+
+    @keyframes moveArrow {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(10px); }
+    }
+
+    @media (max-width: 768px) {
+      .tarjeta { width: 45%; min-height: 250px; }
+    }
+
+    @media (max-width: 480px) {
+      .tarjeta { width: 90%; min-height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚀 Voto Responsable 🚀</h1>
+
+  <div class="tarjetas">
+
+    <div class="tarjeta">
+      <div class="iconos">🧠💡📚</div>
+      <h2>Reflexiona</h2>
+      <p>Pensar en lo que tu colegio necesita y cómo cada candidatura beneficiará a todos los estudiantes. Toma tu tiempo para reflexionar antes de votar.</p>
+    </div>
+
+    <div class="tarjeta">
+      <div class="iconos">👂🤝💬</div>
+      <h2>Respeta Opiniones</h2>
+      <p>Escucha a tus compañeros y valora todas las ideas antes de tomar tu decisión. La diversidad de opiniones enriquece la elección.</p>
+    </div>
+
+    <div class="tarjeta">
+      <div class="iconos">❤️✨🎯</div>
+      <h2>Elige con Corazón</h2>
+      <p>Prioriza liderazgo, empatía y compromiso sobre la popularidad para construir un mejor colegio. Vota con conciencia y responsabilidad.</p>
+    </div>
+
+    <div class="tarjeta">
+      <div class="iconos">📖📝🔎</div>
+      <h2>Infórmate</h2>
+      <p>Investiga sobre las listas y candidatas antes de votar, valora sus propuestas y trayectoria. Tomar decisiones informadas garantiza un voto responsable.</p>
+    </div>
+
+  </div>
+
+  <button class="btn-siguiente" onclick="irAliados()">Siguiente: Nuestros Aliados <span>➡️</span></button>
+
+  <script>
+    function irAliados() {
+      window.location.href = "aliados.html";
+    }
+  </script>
+
+</body>
+</html>

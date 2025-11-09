@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aliados Estrellas</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: #1b2a49; /* fondo nocturno para estrellas */
+    overflow-x: hidden;
+  }
+
+  /* Lluvia de estrellas */
+  .star {
+    position: absolute;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 2s infinite alternate, fall 5s infinite linear;
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.5); }
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(800px) rotate(360deg); }
+  }
+
+  h1 {
+    text-align: center;
+    color: gold;
+    font-size: 3rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ffd700;
+  }
+
+  .cartillas-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  /* Cartilla desde Uiverse.io adaptada */
+  .card {
+    width: 190px;
+    height: 254px;
+    background: linear-gradient(135deg, #f9c74f, #f9844a); /* colores divertidos / dorado */
+    border-radius: 15px;
+    box-shadow: 1px 5px 60px 0px #00000050;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-10px) scale(1.05);
+  }
+
+  .card .card-border-top {
+    width: 60%;
+    height: 3%;
+    background: #ffd700; /* dorado */
+    margin: auto;
+    border-radius: 0 0 15px 15px;
+  }
+
+  .card .img {
+    width: 70px;
+    height: 80px;
+    background: #fff; /* espacio para foto */
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 25px;
+    overflow: hidden;
+  }
+
+  .card span {
+    font-weight: 600;
+    color: #1b2a49;
+    text-align: center;
+    display: block;
+    padding-top: 10px;
+    font-size: 16px;
+  }
+
+  .card .job {
+    font-weight: 400;
+    color: #1b2a49;
+    display: block;
+    text-align: center;
+    padding-top: 3px;
+    font-size: 12px;
+  }
+
+  .card button {
+    padding: 8px 25px;
+    display: block;
+    margin: auto;
+    border-radius: 8px;
+    border: none;
+    margin-top: 15px;
+    background: #ffd700; /* dorado */
+    color: #1b2a49;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+
+  .card button:hover {
+    background: #e6c200;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>¡Nuestros Aliados Estrellas!</h1>
+
+<!-- Cartillas -->
+<div class="cartillas-container">
+  <div class="card" onclick="window.open('VIDEO1_LINK_AQUI','_blank')">
+    <div class="card-border-top"></div>
+    <div class="img">
+      <!-- Aquí va la foto de Deysi Mejía -->
+    </div>
+    <span>Deysi Mejía</span>
+    <p class="job">Psicóloga educativa, ayudando a florecer mentes jóvenes.</p>
+    <button>Ver Video</button>
+  </div>
+
+  <div class="card" onclick="window.open('VIDEO2_LINK_AQUI','_blank')">
+    <div class="card-border-top"></div>
+    <div class="img">
+      <!-- Aquí va la foto de Fabiola Hernández Huallanca -->
+    </div>
+    <span>Fabiola Hernández</span>
+    <p class="job">Emprendedora que inspira a todos a perseguir sus sueños.</p>
+    <button>Ver Video</button>
+  </div>
+
+  <div class="card" onclick="window.open('VIDEO3_LINK_AQUI','_blank')">
+    <div class="card-border-top"></div>
+    <div class="img">
+      <!-- Aquí va la foto de Linda Hu De Wu -->
+    </div>
+    <span>Linda Hu De Wu</span>
+    <p class="job">Embajadora de la paz y ex alumna, ejemplo a seguir.</p>
+    <button>Ver Video</button>
+  </div>
+</div>
+
+<!-- Lluvia de estrellas -->
+<script>
+  const numberOfStars = 50;
+  for(let i = 0; i < numberOfStars; i++){
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.style.width = `${Math.random()*8 + 2}px`;
+    star.style.height = star.style.width;
+    star.style.top = `${Math.random()*100}%`;
+    star.style.left = `${Math.random()*100}%`;
+    star.style.animationDelay = `${Math.random()*5}s`;
+    document.body.appendChild(star);
+  }
+</script>
+
+</body>
+</html>
+<!-- Texto animado al final -->
+<div style="margin-top:50px; text-align:center;">
+  <h2 id="animated-text" style="
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-size: 2rem;
+      color: gold;
+      text-shadow: 2px 2px 5px #b8860b;
+  "></h2>
+</div>
+
+<script>
+  const text = "Si te agradaron nuestras propuestas, vota por nosotros!";
+  const animatedText = document.getElementById("animated-text");
+  let index = 0;
+
+  function typeWriter() {
+    if(index < text.length){
+      animatedText.innerHTML += text.charAt(index);
+      index++;
+      // Velocidad aleatoria para efecto chistoso
+      setTimeout(typeWriter, Math.random() * 120 + 50);
+    } else {
+      // Una vez terminado, parpadeo final
+      blinkCursor();
+    }
+  }
+
+  function blinkCursor() {
+    animatedText.innerHTML += "<span id='cursor'>|</span>";
+    let visible = true;
+    setInterval(() => {
+      document.getElementById('cursor').style.opacity = visible ? '0' : '1';
+      visible = !visible;
+    }, 500);
+  }
+
+  typeWriter();
+</script>
+
