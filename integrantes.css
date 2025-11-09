@@ -58,7 +58,7 @@ body {
   z-index: 2;
 }
 
-/* Contenedor */
+/* Contenedor de hojas */
 .hojas-contenedor {
   position: relative;
   width: 100%;
@@ -71,7 +71,7 @@ body {
 
 /* Hojas */
 .hoja {
-  width: 280px; /* más grandes */
+  width: 280px;
   height: 280px;
   border-radius: 22px;
   text-align: center;
@@ -81,7 +81,7 @@ body {
   transform: translateX(-120%);
   transition: all 1.2s ease;
   position: absolute;
-  top: 180px; /* más arriba */
+  top: 180px;
 }
 
 .hoja.mostrar {
@@ -133,6 +133,43 @@ body {
   pointer-events: auto;
   transform: translateX(-50%) translateY(-6px);
 }
+
+/* MEDIA QUERIES PARA CELULARES */
+@media (max-width: 768px) {
+  .hoja {
+    width: 220px;
+    height: 220px;
+    top: 140px;
+    padding: 16px;
+  }
+  .hoja h3 { font-size: 16px; }
+  .hoja p { font-size: 14px; }
+  .titulo { font-size: 30px; top: 15px; }
+  .siguiente-btn {
+    font-size: 18px;
+    padding: 12px 28px;
+    bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hoja {
+    width: 180px;
+    height: 180px;
+    top: 100px;
+    padding: 12px;
+  }
+  .hoja h3 { font-size: 14px; }
+  .hoja p { font-size: 12px; }
+  .titulo { font-size: 24px; top: 10px; }
+  .siguiente-btn {
+    font-size: 16px;
+    padding: 10px 24px;
+    bottom: 20px;
+  }
+}
+
+
 
 
 
